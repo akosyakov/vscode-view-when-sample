@@ -1,0 +1,135 @@
+{
+	"name": "vscode-view-when-sample",
+	"displayName": "vscode-view-when-sample",
+	"description": "",
+	"publisher": "test",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.37.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"*"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"views": {
+			"explorer": [
+				{
+					"id": "nodeDependencies",
+					"name": "Node Dependencies"
+				}
+			]
+		},
+		"commands": [
+			{
+				"command": "test.explorer.visible",
+				"title": "Test Explorer Visible"
+			},
+			{
+				"command": "test.search.viewlet.visible",
+				"title": "Test Search Viewlet Visible"
+			},
+			{
+				"command": "test.scm.visible",
+				"title": "Test SCM Visible"
+			},
+			{
+				"command": "test.debug.visible",
+				"title": "Test Debug Visible"
+			},
+			{
+				"command": "test.markers.visible",
+				"title": "Test Markers Visible"
+			},
+			{
+				"command": "test.output.visible",
+				"title": "Test Output Visible"
+			},
+			{
+				"command": "test.repl.visible",
+				"title": "Test Debug Console Visible"
+			},
+			{
+				"command": "test.terminal.visible",
+				"title": "Test Terminal Visible"
+			},
+			{
+				"command": "test.search.panel.visible",
+				"title": "Test Search Panel Visible"
+			},
+			{
+				"command": "test.nodeDependencies.focused",
+				"title": "Test Node Dependencies Focused"
+			}
+		],
+		"menus": {
+			"commandPalette": [
+				{
+					"command": "test.explorer.visible",
+					"when": "activeViewlet == 'workbench.view.explorer'"
+				},
+				{
+					"command": "test.search.viewlet.visible",
+					"when": "activeViewlet == 'workbench.view.search'"
+				},
+				{
+					"command": "test.scm.visible",
+					"when": "activeViewlet == 'workbench.view.scm'"
+				},
+				{
+					"command": "test.debug.visible",
+					"when": "activeViewlet == 'workbench.view.debug'"
+				},
+				{
+					"command": "test.markers.visible",
+					"when": "activePanel == 'workbench.panel.markers'"
+				},
+				{
+					"command": "test.output.visible",
+					"when": "activePanel == 'workbench.panel.output'"
+				},
+				{
+					"command": "test.repl.visible",
+					"when": "activePanel == 'workbench.panel.repl'"
+				},
+				{
+					"command": "test.terminal.visible",
+					"when": "activePanel == 'workbench.panel.terminal'"
+				},
+				{
+					"command": "test.search.panel.visible",
+					"when": "activePanel == 'workbench.view.search'"
+				},
+				{
+					"command": "test.nodeDependencies.focused",
+					"when": "focusedView == nodeDependencies"
+				}
+			]
+		},
+		"keybindings": [
+			{
+				"command": "test.nodeDependencies.focused",
+				"key": "ctrl+f1",
+				"mac": "cmd+f1",
+				"when": "focusedView == nodeDependencies"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "yarn run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "yarn run compile && node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"typescript": "^3.3.1",
+		"vscode": "^1.1.28",
+		"tslint": "^5.12.1",
+		"@types/node": "^10.12.21",
+		"@types/mocha": "^2.2.42"
+	}
+}
